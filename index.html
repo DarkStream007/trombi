@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>trombinoscope</title>
+        <meta charset = "utf-8">
+        <link rel = "icon" href = "">
+        <!--<link rel = "stylesheet" href = "tab.css">-->
+    </head>
+    <style>
+        header{
+            width: 100%;
+            height: 10rem;
+            background-color: #40d1f1;
+        }
+        p.maiia{
+            font-size: 18px;
+        }
+        p.hall_of_fame{
+            font-weight: bold;
+            font-size: 32px;
+            font-family: Georgia, "Times New Roman", Times, serif;;
+        }
+        p.def_header{
+            font-size: 12px;
+            /*font-family: ;*/
+        }
+        p.def_header, p.hall_of_fame, p.maiia{
+            color: white;
+            text-align: center;
+        }
+
+        div.boite1,div.boite2,div.boite3, div.boite4{
+            height: 15rem;
+            width: 32rem;
+            background-color: white;
+            display: inline-block;
+            padding: 5px;
+        }
+        div.article1, div.article2, div.article3{
+            display: flex;
+            justify-content: space-between;
+            background-color: rgb(243, 239, 181);
+            width: 50%;
+            height: 100%;
+            float: right;
+            text-align: center;
+            flex-direction: column;
+        }
+        div.origine{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img{
+            width: 50%;
+            height: 100%;
+            filter: grayscale(1);
+        }
+        img:hover{
+            filter: none;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+
+        article.text_employer{
+            font-size: 21px;
+        }
+        img.drapeau{
+            height: 16px;
+            width: 22px;
+            filter: none;
+            cursor: default;
+        }
+        p.pays{
+            font-size: 12px;
+        }
+    </style>
+    <body>
+        <header>
+            <p class = "maiia">Maiia</p>
+            <p class = "hall_of_fame">Hall of fame</p>
+            <p class = "def_header">Check it out and find out who we are</p>
+        </header>
+        <main>
+            <!-- Div de test création d'autre div en js-->
+            <div class = "boite1">
+                <img src = "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg" id = "img">
+                <div class = "article1">
+                    <article class = "text_employer" id = "text_employer">Renaud 34ans</article>
+                
+                    <div class = "origine">
+                        <p class = "pays"> France Nante </p>
+                        <img class = "drapeau" src = "https://media.istockphoto.com/id/806626836/fr/vectoriel/drapeau-france.jpg?s=612x612&w=0&k=20&c=9au6i1sguZnoHVr6qinZoHJV1t4oKzQkFTi__3U531g=">
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class = "boite2">
+                <img src = "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg" id = "img">
+                <div class = "article1">
+                    <article class = "text_employer" id = "text_employer">Hélio 20ans</article>
+                    <div class = "origine">
+                        <p class = "pays"></p>
+                        <img class = "drapeau" src = "">
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class = "boite3">
+                <img src = "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg" id = "img">
+                <div class = "article3">
+                    <article class = "text_employer" id = "text_employer">Antoine 48ans</article>
+                    <div class = "origine">
+                        <p class = "pays"></p>
+                        <img class = "drapeau" src = "">
+                    </div>
+                </div>
+            </div>
+
+
+        </main>
+    </body>
+    <!--<script src = "tab.js" defer></script>-->
+    <script>
+       /* class createboite{
+            constructor(image, text, pays, img_drapeau){
+                let creatDiv = document.createElement("div");
+                creatDiv.className = "boite4";
+
+                let creatIMG = document.createElement("img");
+                creatIMG.src = image;
+
+                let creatDiv2 = document.createElement("div");
+                creatDiv2.className = "article3";
+
+                creatDiv.appendChild(creatDiv2);
+
+                let article_ = document.createElement("article");
+                article_.className = "text_employer";
+                article_.innerHTML = text;
+
+                let creatDiv3 = document.createElement("div");
+                creatDiv3.className = "origine";
+
+                let para = document.createElement("p");
+                para.className = "pays";
+                para.innerHTML = pays;
+
+                let creatIMG2 = document.createElement("img");
+                creatIMG2.className = "drapeau";
+                creatIMG2.src = img_drapeau;
+
+                creatDiv2.appendChild(article_);
+                creatDiv2.appendChild(creatDiv3);
+                creatDiv3.appendChild(para);
+                creatDiv3.appendChild(creatIMG2);
+
+                document.body.appendChild(creatDiv);
+            }
+        }
+        let = new createboite("https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg", "Fabien age 36ans", "France Angers", "https://media.istockphoto.com/id/806626836/fr/vectoriel/drapeau-france.jpg?s=612x612&w=0&k=20&c=9au6i1sguZnoHVr6qinZoHJV1t4oKzQkFTi__3U531g=");
+    */
+        
+
+        const img = document.getElementById("img");
+        const text = document.getElementById("text_employer");
+        
+        if (img.style.filter === "none"){
+            text.style.fontSize = "23px";
+            console.log("c'est le text.style qui ne fonctionne pas");
+        }
+        else{
+            console.log("probléme: il s'en fou royalement de ma condition")
+        }
+    </script>
+</html>
