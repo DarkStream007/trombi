@@ -116,11 +116,11 @@
                 <div class = "article3">
                     <article class = "text_employer" id = "text_employer">Antoine 48ans</article>
 
-                    <article class = "metier">font-end</article>
-                    <h3 class = "hobby">Hobby</h3> //ne pas changer dans le js
-                    <article class = "result hobby">Gamer</article>
-                    <h3 class = "favorite_food">Favorite food</h3> // pas changer dans le js
-                    <article class = "result_food">Burger</article>
+                        <article class = "metier">font-end</article>
+                        h3 class = "hobby">Hobby</h3> //ne pas changer dans le js
+                        <article class = "result hobby">Gamer</article>
+                        <h3 class = "favorite_food">Favorite food</h3> // pas changer dans le js
+                        <article class = "result_food">Burger</article>
                     <h3 class = "email">E-mail</h3> // pas changer dans le js
                     <article class = "result_email">truc_bidule@gmail.com</article>
 
@@ -137,7 +137,7 @@
     <!--<script src = "tab.js" defer></script>-->
     <script>
        class createboite{
-           constructor(image, text, pays, img_drapeau,   metier){
+           constructor(image, text, pays, img_drapeau,   metier, hobby, favorite_food, email){
                 let creatDiv = document.createElement("div");
                 creatDiv.className = "boite3";
 
@@ -158,8 +158,34 @@
                 article_met.className = "metier"; // faire le css et le tester 
                 article_met.innerHTML = metier
 
+                let passion = document.createElement("h3");
+                passion.innerHTML = "Hobby: "; // faire le css et le tester
 
+                let hobby_result = document.createElement("article");
+                hobby_result.className = "result_hobby"; // faire le css et le tester
+                hobby_result.innerHTML = hobby;
 
+                let food = document.createElement("h3");
+                food.innerHTML = "Favorite Food: "; // faire le css et le tester
+
+                let food_result = document.createElement("article");
+                food_result.className = "food_result"; // faire le css et le tester
+                food_result.innerHTML = favorite_food;
+
+                let mail = document.createElement("h3");
+                mail.innerHTML = "Email: "; //faire le css et le tester
+
+                let result_email = document.createElement("article");
+                result_email.className = "result_email"; // faire le css et le tester
+                result_email.innerHTML = email;
+
+                creatDiv2.appendChild(article_met);
+                creatDiv2.appendChild(passion);
+                creatDiv2.appendChild(hobby_result);
+                creatDiv2.appendChild(food);
+                creatDiv2.appendChild(food_result);
+                creatDiv2.appendChild(mail);
+                creatDiv2.appendChild(result_email);
 
 
                 let creatDiv3 = document.createElement("div");
@@ -185,9 +211,14 @@
 
         const data = [{
             photo: 'https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg',
-            name: 'Coucou',
+            name: 'Renaud',
             loc: "Nante",
-            drapeau: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ensign_of_France.svg/langfr-225px-Ensign_of_France.svg.png"
+            drapeau: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ensign_of_France.svg/langfr-225px-Ensign_of_France.svg.png",
+            metier: "Dévloppeur",
+            hobby: "JSP",
+            favorite_food: "fish",
+            email: "renaudderixx@gmail.com",
+
         },{
             photo: 'https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg',
             name: 'Coucou 2',
@@ -210,7 +241,7 @@
             drapeau: "",
         }];
 
-        data.forEach(person => new createboite(person.photo, person.name, person.loc, person.drapeau));
+        data.forEach(person => new createboite(person.photo, person.name, person.loc, person.drapeau, person.metier, person.hobby, person.favorite_food, person.email));
 
         
        /* function mafunction(person) {
@@ -222,7 +253,7 @@
             data.forEach(mafunction);*/
 
 
-       // let = new createboite("https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg", "Fabien age 36ans", "France Angers", "https://media.istockphoto.com/id/806626836/fr/vectoriel/drapeau-france.jpg?s=612x612&w=0&k=20&c=9au6i1sguZnoHVr6qinZoHJV1t4oKzQkFTi__3U531g=");
+       // let = new createboite("https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg", "Fabien age 36ans", "France Angers", "https://media.istockphoto.com/id/806626836/fr/vectoriel/drapeau-france.jpg?s=612x612&w=0&k=20&c=9au6i1sguZnoHVr6qinZoHJV1t4oKzQkFTi__3U531g=", );
 
     </script>
 </html>
