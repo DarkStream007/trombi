@@ -93,57 +93,6 @@
             <p class = "hall_of_fame">Hall of fame</p>
             <p class = "def_header">Check it out and find out who we are</p>
         </header>
-        <main>
-            <!-- Div de test création d'autre div en js-->
-            <!--<div class = "boite1">
-                <img src = "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg">
-                <div class = "article1">
-                    <article class = "text_employer">Renaud 34ans</article>
-                
-                    <div class = "origine">
-                        <p class = "pays"> France Nante </p>
-                        <img class = "drapeau" src = "https://media.istockphoto.com/id/806626836/fr/vectoriel/drapeau-france.jpg?s=612x612&w=0&k=20&c=9au6i1sguZnoHVr6qinZoHJV1t4oKzQkFTi__3U531g=">
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div class = "boite2">
-                <img src = "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg">
-                <div class = "article1">
-                    <article class = "text_employer" id = "text_employer">Hélio 20ans</article>
-                    <div class = "origine">
-                        <p class = "pays"></p>
-                        <img class = "drapeau" src = "">
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class = "boite3">
-                <img src = "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg">
-                <div class = "article3">
-                    <article class = "text_employer" id = "text_employer">Antoine 48ans</article>
-
-                        <article class = "metier">font-end</article>
-                        h3 class = "hobby">Hobby</h3> //ne pas changer dans le js
-                        <article class = "result hobby">Gamer</article>
-                        <h3 class = "favorite_food">Favorite food</h3> // pas changer dans le js
-                        <article class = "result_food">Burger</article>
-                    <h3 class = "email">E-mail</h3> // pas changer dans le js
-                    <article class = "result_email">truc_bidule@gmail.com</article>
-
-                    <div class = "origine">
-                        <p class = "pays"></p>
-                        <img class = "drapeau" src = "">
-                    </div>
-                </div>
-            </div>
-        -->
-
-        </main>
     </body>
     <!--<script src = "tab.js" defer></script>-->
     <script>
@@ -160,43 +109,51 @@
 
                 creatDiv.appendChild(creatDiv2);
 
+
+
+
+                let creatDiv4 = document.createElement("div");
+                creatDiv4.className = "total_text";
+                creatDiv2.appendChild(creatDiv4);
+
+
+
                 let article_ = document.createElement("article");
                 article_.className = "text_employer";
                 article_.innerHTML = name;
 
                 let article_met = document.createElement("article");
-                article_met.className = "metier"; // faire le css et le tester 
+                article_met.className = "metier"; 
                 article_met.innerHTML = metier
 
                 let passion = document.createElement("h3");
-                passion.innerHTML = "Hobby: "; // faire le css et le tester
+                passion.innerHTML = "Hobby: "; 
 
                 let hobby_result = document.createElement("article");
-                hobby_result.className = "result_hobby"; // faire le css et le tester
+                hobby_result.className = "result_hobby"; 
                 hobby_result.innerHTML = hobby;
 
                 let food = document.createElement("h3");
-                food.innerHTML = "Favorite Food: "; // faire le css et le tester
+                food.innerHTML = "Favorite Food: "; 
 
                 let food_result = document.createElement("article");
-                food_result.className = "food_result"; // faire le css et le tester
+                food_result.className = "food_result"; 
                 food_result.innerHTML = favorite_food;
 
                 let mail = document.createElement("h3");
-                mail.innerHTML = "Email: "; //faire le css et le tester
+                mail.innerHTML = "Email: "; 
 
                 let result_email = document.createElement("article");
-                result_email.className = "result_email"; // faire le css et le tester
+                result_email.className = "result_email"; 
                 result_email.innerHTML = email;
 
-                creatDiv2.appendChild(article_met);
-                creatDiv2.appendChild(passion);
-                creatDiv2.appendChild(hobby_result);
-                creatDiv2.appendChild(food);
-                creatDiv2.appendChild(food_result);
-                creatDiv2.appendChild(mail);
-                creatDiv2.appendChild(result_email);
-
+                creatDiv4.appendChild(article_met);
+                creatDiv4.appendChild(passion);
+                creatDiv4.appendChild(hobby_result);
+                creatDiv4.appendChild(food);
+                creatDiv4.appendChild(food_result);
+                creatDiv4.appendChild(mail);
+                creatDiv4.appendChild(result_email);
 
                 let creatDiv3 = document.createElement("div");
                 creatDiv3.className = "origine";
@@ -268,18 +225,6 @@
         }];
 
         data.forEach(person => new createboite(person.photo, person.name, person.loc, person.drapeau, person.metier, person.hobby, person.favorite_food, person.email));
-
-        
-       /* function mafunction(person) {
-            return new createboite(person.photo, person.name, person.name, person.photo);
-            };*/
-
-
-            /*data.forEach(person => mafunction(person));
-            data.forEach(mafunction);*/
-
-
-       // let = new createboite("https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg", "Fabien age 36ans", "France Angers", "https://media.istockphoto.com/id/806626836/fr/vectoriel/drapeau-france.jpg?s=612x612&w=0&k=20&c=9au6i1sguZnoHVr6qinZoHJV1t4oKzQkFTi__3U531g=", );
 
     </script>
 </html>
