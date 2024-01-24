@@ -10,7 +10,7 @@
         header{
             width: 100%;
             height: 10rem;
-            background-color: #40d1f1;
+            background-color: #60c5c4;
         }
         p.maiia{
             font-size: 18px;
@@ -34,17 +34,21 @@
             width: 32rem;
             background-color: white;
             display: inline-block;
-            padding: 5px;
+            
         }
         div.article1, div.article2, div.article3{
             display: flex;
-            justify-content: space-between;
-            background-color: rgb(243, 239, 181);
+            justify-content: space-evenly;
+            background-color: white;
             width: 50%;
             height: 100%;
             float: right;
             text-align: center;
             flex-direction: column;
+            line-height: 0.01;
+        }
+        article, h3, p.pays{
+            color: #67b3d1;
         }
         div.origine{
             display: flex;
@@ -63,8 +67,15 @@
             cursor: pointer;
         }
 
+        article{
+            font-size: 16px;
+        }
         article.text_employer{
             font-size: 21px;
+            display: flex;
+            flex-direction: column;
+            order: -1;
+            margin-bottom: 5px;
         }
         img.drapeau{
             height: 16px;
@@ -137,7 +148,7 @@
     <!--<script src = "tab.js" defer></script>-->
     <script>
        class createboite{
-           constructor(image, text, pays, img_drapeau,   metier, hobby, favorite_food, email){
+           constructor(image, name, pays, img_drapeau,   metier, hobby, favorite_food, email){
                 let creatDiv = document.createElement("div");
                 creatDiv.className = "boite3";
 
@@ -151,8 +162,7 @@
 
                 let article_ = document.createElement("article");
                 article_.className = "text_employer";
-                article_.innerHTML = text;
-
+                article_.innerHTML = name;
 
                 let article_met = document.createElement("article");
                 article_met.className = "metier"; // faire le css et le tester 
@@ -223,22 +233,38 @@
             photo: 'https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg',
             name: 'Coucou 2',
             loc: "Angers",
-            drapeau: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ensign_of_France.svg/langfr-225px-Ensign_of_France.svg.png"
+            drapeau: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ensign_of_France.svg/langfr-225px-Ensign_of_France.svg.png",
+            metier: "a mettre",
+            hobby: "a mettre",
+            favorite_food: "a mettre",
+            email: "a mettre",
         },{
             photo: "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg",
             name: "renault",
             loc: "Angers",
             drapeau: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ensign_of_France.svg/langfr-225px-Ensign_of_France.svg.png",
+            metier: "a mettre",
+            hobby: "a mettre",
+            favorite_food: "a mettre",
+            email: "a mettre",
         },{
             photo: "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg",
             name: "Gabriel",
             loc: "Paris",
-            drapeau: ""
+            drapeau: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ensign_of_France.svg/langfr-225px-Ensign_of_France.svg.png",
+            metier: "a mettre",
+            hobby: "a mettre",
+            favorite_food: "a mettre",
+            email: "a mettre",
         },{
             photo: "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg",
             name: "Hélio",
             loc: "Bordeau",
-            drapeau: "",
+            drapeau: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ensign_of_France.svg/langfr-225px-Ensign_of_France.svg.png",
+            metier: "a mettre",
+            hobby: "a mettre",
+            favorite_food: "a mettre",
+            email: "a mettre",
         }];
 
         data.forEach(person => new createboite(person.photo, person.name, person.loc, person.drapeau, person.metier, person.hobby, person.favorite_food, person.email));
