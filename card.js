@@ -89,6 +89,11 @@ class Card extends HTMLElement {
     // Define the content of the shadow DOM
     this.shadowRoot.innerHTML = `
     <style>  
+      .container {    
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
       div.boite1,div.boite2,div.boite3{
         height: 15rem;
         width: 32rem;
@@ -154,7 +159,9 @@ class Card extends HTMLElement {
     <input type="text" name="search" onkeypress="${search2}" />
     <br />
     <br />
-    ${res}
+    <main class="container">
+     ${res}
+    </main>
   `;
   }
 }
