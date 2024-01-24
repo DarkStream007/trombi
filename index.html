@@ -29,7 +29,7 @@
             text-align: center;
         }
 
-        div.boite1,div.boite2,div.boite3, div.boite4{
+        div.boite1,div.boite2,div.boite3{
             height: 15rem;
             width: 32rem;
             background-color: white;
@@ -84,10 +84,10 @@
         </header>
         <main>
             <!-- Div de test création d'autre div en js-->
-            <div class = "boite1">
-                <img src = "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg" id = "img">
+            <!--<div class = "boite1">
+                <img src = "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg">
                 <div class = "article1">
-                    <article class = "text_employer" id = "text_employer">Renaud 34ans</article>
+                    <article class = "text_employer">Renaud 34ans</article>
                 
                     <div class = "origine">
                         <p class = "pays"> France Nante </p>
@@ -99,7 +99,7 @@
 
 
             <div class = "boite2">
-                <img src = "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg" id = "img">
+                <img src = "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg">
                 <div class = "article1">
                     <article class = "text_employer" id = "text_employer">Hélio 20ans</article>
                     <div class = "origine">
@@ -112,25 +112,34 @@
 
 
             <div class = "boite3">
-                <img src = "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg" id = "img">
+                <img src = "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg">
                 <div class = "article3">
                     <article class = "text_employer" id = "text_employer">Antoine 48ans</article>
+
+                    <article class = "metier">font-end</article>
+                    <h3 class = "hobby">Hobby</h3> //ne pas changer dans le js
+                    <article class = "result hobby">Gamer</article>
+                    <h3 class = "favorite_food">Favorite food</h3> // pas changer dans le js
+                    <article class = "result_food">Burger</article>
+                    <h3 class = "email">E-mail</h3> // pas changer dans le js
+                    <article class = "result_email">truc_bidule@gmail.com</article>
+
                     <div class = "origine">
                         <p class = "pays"></p>
                         <img class = "drapeau" src = "">
                     </div>
                 </div>
             </div>
-
+        -->
 
         </main>
     </body>
     <!--<script src = "tab.js" defer></script>-->
     <script>
-       /* class createboite{
-            constructor(image, text, pays, img_drapeau){
+       class createboite{
+           constructor(image, text, pays, img_drapeau,   metier){
                 let creatDiv = document.createElement("div");
-                creatDiv.className = "boite4";
+                creatDiv.className = "boite3";
 
                 let creatIMG = document.createElement("img");
                 creatIMG.src = image;
@@ -144,6 +153,15 @@
                 article_.className = "text_employer";
                 article_.innerHTML = text;
 
+
+                let article_met = document.createElement("article");
+                article_met.className = "metier"; // faire le css et le tester 
+                article_met.innerHTML = metier
+
+
+
+
+
                 let creatDiv3 = document.createElement("div");
                 creatDiv3.className = "origine";
 
@@ -155,6 +173,7 @@
                 creatIMG2.className = "drapeau";
                 creatIMG2.src = img_drapeau;
 
+                creatDiv.appendChild(creatIMG)
                 creatDiv2.appendChild(article_);
                 creatDiv2.appendChild(creatDiv3);
                 creatDiv3.appendChild(para);
@@ -163,19 +182,47 @@
                 document.body.appendChild(creatDiv);
             }
         }
-        let = new createboite("https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg", "Fabien age 36ans", "France Angers", "https://media.istockphoto.com/id/806626836/fr/vectoriel/drapeau-france.jpg?s=612x612&w=0&k=20&c=9au6i1sguZnoHVr6qinZoHJV1t4oKzQkFTi__3U531g=");
-    */
-        
 
-        const img = document.getElementById("img");
-        const text = document.getElementById("text_employer");
+        const data = [{
+            photo: 'https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg',
+            name: 'Coucou',
+            loc: "Nante",
+            drapeau: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ensign_of_France.svg/langfr-225px-Ensign_of_France.svg.png"
+        },{
+            photo: 'https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg',
+            name: 'Coucou 2',
+            loc: "Angers",
+            drapeau: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ensign_of_France.svg/langfr-225px-Ensign_of_France.svg.png"
+        },{
+            photo: "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg",
+            name: "renault",
+            loc: "Angers",
+            drapeau: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ensign_of_France.svg/langfr-225px-Ensign_of_France.svg.png",
+        },{
+            photo: "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg",
+            name: "Gabriel",
+            loc: "Paris",
+            drapeau: ""
+        },{
+            photo: "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg",
+            name: "Hélio",
+            loc: "Bordeau",
+            drapeau: "",
+        }];
+
+        data.forEach(person => new createboite(person.photo, person.name, person.loc, person.drapeau));
+
         
-        if (img.style.filter === "none"){
-            text.style.fontSize = "23px";
-            console.log("c'est le text.style qui ne fonctionne pas");
-        }
-        else{
-            console.log("probléme: il s'en fou royalement de ma condition")
-        }
+       /* function mafunction(person) {
+            return new createboite(person.photo, person.name, person.name, person.photo);
+            };*/
+
+
+            /*data.forEach(person => mafunction(person));
+            data.forEach(mafunction);*/
+
+
+       // let = new createboite("https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/68/54/71/19056539.jpg", "Fabien age 36ans", "France Angers", "https://media.istockphoto.com/id/806626836/fr/vectoriel/drapeau-france.jpg?s=612x612&w=0&k=20&c=9au6i1sguZnoHVr6qinZoHJV1t4oKzQkFTi__3U531g=");
+
     </script>
 </html>
