@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trombinoscope</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* height: 100vh; */
+        }
+
+        #header {
+            position: sticky;
+            display: flex;
+            flex-direction: row;
+            top: 0;
+            background-color: #105C77;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #search-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        #search-container select {
+            width: 9rem;
+        }
+
+        #app {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .user-profile {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .user-profile img {
+            width: 15rem;
+            height: auto;
+            margin-top: 1rem;
+            border-radius: 8px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .user-info {
+            padding: 16px;
+        }
+
+        .user-info h2 {
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .user-info p {
+            margin: 0;
+            color: #666;
+        }
+
+        .user-profile.zoomed {
+            transform: scale(1.2) rotate(+5deg);
+            z-index: 3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="header">
+        <h1>Trombinoscope</h1>
+        <div id="search-container">
+            <section>
+                <label for="search">Equipe :</label>
+                <select id="search-select" onchange="filterUsers()">
+                    <option value="all">Toutes</option>
+                </select>
+            </section>
+            <section>
+                <label for="search">Rechercher :</label>
+                <input type="search" id="search" oninput="filterUsers()">
+            </section>
+        </div>
+    </header>
+
+    <main id="app"></main>
+
+    <script>
+
+        const getRandomColor = () => {
+            const minBrightness = 180; // Valeur minimale pour assurer une couleur claire
+
+            const getRandomComponent = () => {
+                const value = Math.floor(Math.random() * 256);
+                return value < minBrightness ? value + minBrightness : value;
+            };
+
+            const red = getRandomComponent();
+            const green = getRandomComponent();
+            const blue = getRandomComponent();
+
+            return `rgb(${red}, ${green}, ${blue})`;
+        };
+
+        const zoomCard = (selectedCard) => {
+            const cards = document.querySelectorAll('.user-profile');
+            cards.forEach(card => {
+                card.classList.remove('zoomed');
+            });
+
+            selectedCard.classList.add('zoomed');
+        };
+
+        class UserProfile extends HTMLElement {
+            connectedCallback() {
+                const user = JSON.parse(this.getAttribute('user'));
+                const randomColor = getRandomColor();
+
+                this.innerHTML = `
+                    <article class="user-profile" style="background-color: ${randomColor};" onmouseover="zoomCard(this)">
+                        <img src="${user.photo_profil}" alt="Photo de profil">
+                        <footer class="user-info">
+                            <h2>${user.prenom} ${user.nom}</h2>
+                            <p>Équipe: ${user.equipe}</p>
+                            <p>Rôle: ${user.role}</p>
+                            <p>Passion: ${user.passion}</p>
+                        </footer>
+                    </article>
+                `;
+            }
+        }
+
+        customElements.define('user-profile', UserProfile);
+
+        // TODO: gestion de cas sans photo
+        const users = [
+            {
+                "nom": "Dupont",
+                "prenom": "Alice",
+                "equipe": "Phoenix",
+                "role": "Developpeur Fullstack",
+                "passion": "Photographie",
+                "photo_profil": "https://randomuser.me/api/portraits/women/1.jpg"
+            },
+            {
+                "nom": "Martin",
+                "prenom": "Jean",
+                "equipe": "Solaris",
+                "role": "Developpeur Backend",
+                "passion": "Musique",
+                "photo_profil": "https://randomuser.me/api/portraits/men/2.jpg"
+            },
+            {
+                "nom": "Lefevre",
+                "prenom": "Sophie",
+                "equipe": "Aries",
+                "role": "Developpeur Frontend",
+                "passion": "Voyages",
+                "photo_profil": "https://randomuser.me/api/portraits/women/3.jpg"
+            },
+            {
+                "nom": "Dubois",
+                "prenom": "Thomas",
+                "equipe": "Aries",
+                "role": "Testeur Manuel",
+                "passion": "Cuisine",
+                "photo_profil": "https://randomuser.me/api/portraits/men/4.jpg"
+            },
+            {
+                "nom": "Robert",
+                "prenom": "Laura",
+                "equipe": "Solaris",
+                "role": "PM",
+                "passion": "Lecture",
+                "photo_profil": "https://randomuser.me/api/portraits/women/5.jpg"
+            },
+            {
+                "nom": "Garcia",
+                "prenom": "Carlos",
+                "equipe": "Orion",
+                "role": "DevOps",
+                "passion": "Sports",
+                "photo_profil": "https://randomuser.me/api/portraits/men/6.jpg"
+            },
+            {
+                "nom": "Moreau",
+                "prenom": "Marie",
+                "equipe": "Orion",
+                "role": "Developpeur Fullstack",
+                "passion": "Art",
+                "photo_profil": "https://randomuser.me/api/portraits/women/7.jpg"
+            },
+            {
+                "nom": "Lopez",
+                "prenom": "Antoine",
+                "equipe": "Mobile",
+                "role": "Developpeur Backend",
+                "passion": "Jeux vidéo",
+                "photo_profil": "https://randomuser.me/api/portraits/men/8.jpg"
+            },
+            {
+                "nom": "Cohen",
+                "prenom": "Emma",
+                "equipe": "Orion",
+                "role": "Developpeur Frontend",
+                "passion": "Danse",
+                "photo_profil": "https://randomuser.me/api/portraits/women/9.jpg"
+            },
+            {
+                "nom": "Fournier",
+                "prenom": "Lucas",
+                "equipe": "Solaris",
+                "role": "Testeur Manuel",
+                "passion": "Photographie",
+                "photo_profil": "https://randomuser.me/api/portraits/men/10.jpg"
+            }
+        ];
+
+
+        const populateTeamSelect = () => {
+            const teamSelect = document.getElementById('search-select');
+            const uniqueTeams = [...new Set(users.map(user => user.equipe))];
+
+            uniqueTeams.forEach(team => {
+                const option = document.createElement('option');
+                option.value = team.toLowerCase();
+                option.text = team;
+                teamSelect.add(option);
+            });
+        };
+
+        populateTeamSelect();
+
+        const app = document.getElementById('app');
+        const renderUsers = (usersToRender) => {
+            app.innerHTML = '';
+
+            // TODO: mettre le tout dans des ul>li
+            usersToRender.forEach(user => {
+                const userProfile = document.createElement('user-profile');
+                userProfile.setAttribute('user', JSON.stringify(user));
+                app.appendChild(userProfile);
+            });
+        };
+
+        const filterUsers = () => {
+            let filteredUsers = users;
+
+            const searchTeamTerm = document.getElementById('search-select').value;
+            if (searchTeamTerm && searchTeamTerm !== 'all') {
+                filteredUsers = filteredUsers.filter(user => user.equipe.toLowerCase() === searchTeamTerm);
+            }
+
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            if (searchTerm) {
+                filteredUsers = filteredUsers.filter(user =>
+                    user.nom.toLowerCase().includes(searchTerm) ||
+                    user.prenom.toLowerCase().includes(searchTerm) ||
+                    user.equipe.toLowerCase().includes(searchTerm) ||
+                    user.role.toLowerCase().includes(searchTerm) ||
+                    user.passion.toLowerCase().includes(searchTerm)
+                );
+            }
+
+            renderUsers(filteredUsers);
+        };
+
+        renderUsers(users);
+
+    </script>
+
+</body>
+
+</html>
