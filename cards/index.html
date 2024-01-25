@@ -130,7 +130,9 @@
                 card.classList.remove('zoomed');
             });
 
-            selectedCard.classList.add('zoomed');
+            if (selectedCard) {
+                selectedCard.classList.add('zoomed');
+            }
         };
 
         class UserProfile extends HTMLElement {
@@ -139,7 +141,7 @@
                 const randomColor = getRandomColor();
 
                 this.innerHTML = `
-                    <article class="user-profile" style="background-color: ${randomColor};" onmouseover="zoomCard(this)">
+                    <article class="user-profile" style="background-color: ${randomColor};" onmouseover="zoomCard(this)" onmouseout="zoomCard()">
                         <img src="${user.photo_profil}" alt="Photo de profil">
                         <footer class="user-info">
                             <h2>${user.prenom} ${user.nom}</h2>
@@ -192,7 +194,7 @@
                 "nom": "Robert",
                 "prenom": "Laura",
                 "equipe": "Solaris",
-                "role": "PM",
+                "role": "Product Manager",
                 "passion": "Lecture",
                 "photo_profil": "https://randomuser.me/api/portraits/women/5.jpg"
             },
